@@ -1,26 +1,18 @@
 const express = require('express');
 const authController = require('./auth.controller');
+const authenticate = require('../../middlewares/authenticate');
 const validate = require('../../middlewares/validate');
-const { z } = require('zod');
+const { registerSchema, loginSchema } = require('./auth.schema');
 
 const router = express.Router();
 
-const registerSchema = z.object({
-  body: z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
-    name: z.string().min(2)
-  })
-});
-
-const loginSchema = z.object({
-  body: z.object({
-    email: z.string().email(),
-    password: z.string()
-  })
-});
-
+// POST /api/auth/register
 router.post('/register', validate(registerSchema), authController.register);
+
+// POST /api/auth/login
 router.post('/login', validate(loginSchema), authController.login);
+
+// GET /api/auth/profile  (protected)
+router.get('/profile', authenticate, authController.getProfile);
 
 module.exports = router;

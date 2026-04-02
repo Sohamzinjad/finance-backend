@@ -8,7 +8,7 @@ const errorHandler = require('./middlewares/errorHandler');
 // Route imports
 const authRoutes = require('./modules/auth/auth.routes');
 const usersRoutes = require('./modules/users/users.routes');
-const recordsRoutes = require('./modules/records/records.routes');
+const transactionsRoutes = require('./modules/transactions/transactions.routes');
 const dashboardRoutes = require('./modules/dashboard/dashboard.routes');
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
-app.use('/api/records', recordsRoutes);
+app.use('/api/transactions', transactionsRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
 // 404 handler

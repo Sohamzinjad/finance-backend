@@ -4,7 +4,7 @@ const { successResponse } = require('../../utils/response');
 const getSummary = async (req, res, next) => {
   try {
     const result = await dashboardService.getSummary(req.user.userId);
-    return successResponse(res, 'Dashboard summary retrieved successfully', result);
+    return successResponse(res, result, 'Dashboard summary retrieved successfully');
   } catch (error) {
     next(error);
   }
