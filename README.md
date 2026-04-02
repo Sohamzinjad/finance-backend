@@ -19,8 +19,6 @@ The active API surface is:
 - `/api/users`
 - `/api/records`
 - `/api/dashboard`
-- `/docs` for browser-based API documentation
-- `/openapi.json` for the OpenAPI spec
 
 The older `transactions` module remains in the repository as a deprecated legacy reference and is not mounted in the Express app.
 
