@@ -8,6 +8,7 @@ const usersRoutes = require('./modules/users/users.routes');
 const recordsRoutes = require('./modules/records/records.routes');
 const dashboardRoutes = require('./modules/dashboard/dashboard.routes');
 const errorHandler = require('./middlewares/errorHandler');
+const { openApiDocument, renderDocsHtml } = require('./docs/openapi');
 
 const app = express();
 
@@ -21,6 +22,14 @@ app.get('/health', (req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
   });
+});
+
+app.get('/openapi.json', (req, res) => {
+  res.json(openApiDocument(req));
+});
+
+app.get('/docs', (req, res) => {
+  res.type('html').send(renderDocsHtml());
 });
 
 app.use('/api/auth', authRoutes);
