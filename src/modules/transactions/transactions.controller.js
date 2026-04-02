@@ -1,6 +1,7 @@
 const transactionsService = require('./transactions.service');
 const { successResponse } = require('../../utils/response');
 
+// Deprecated: kept only as a legacy reference while /api/records is the active API.
 const getAllTransactions = async (req, res, next) => {
   try {
     const result = await transactionsService.getTransactionsByUser(req.user.userId);

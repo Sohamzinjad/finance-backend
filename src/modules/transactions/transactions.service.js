@@ -1,5 +1,6 @@
 const prisma = require('../../config/db');
 
+// Deprecated: replaced by src/modules/records/records.service.js.
 const getTransactionsByUser = async (userId) => {
   return await prisma.transaction.findMany({
     where: { userId },

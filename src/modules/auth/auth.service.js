@@ -17,7 +17,7 @@ const safeUserSelect = {
  * Register a new user
  */
 const register = async (data) => {
-  const { name, email, password, role } = data;
+  const { name, email, password } = data;
 
   const existingUser = await prisma.user.findUnique({ where: { email } });
   if (existingUser) {
@@ -29,7 +29,7 @@ const register = async (data) => {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = await prisma.user.create({
-    data: { name, email, passwordHash, role },
+    data: { name, email, passwordHash, role: 'VIEWER' },
     select: safeUserSelect,
   });
 

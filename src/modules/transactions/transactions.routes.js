@@ -4,6 +4,7 @@ const authenticate = require('../../middlewares/authenticate');
 const validate = require('../../middlewares/validate');
 const { z } = require('zod');
 
+// Deprecated: this legacy module is intentionally not mounted in src/app.js.
 const router = express.Router();
 
 const createTransactionSchema = z.object({
